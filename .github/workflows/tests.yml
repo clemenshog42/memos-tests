@@ -52,7 +52,7 @@ jobs:
         run: npx playwright install --with-deps chromium
         working-directory: web
       - name: Start backend
-        run: docker-compose -f scripts/compose.yaml up -d
+        run: docker compose -f scripts/compose.yaml up -d
       - name: Run E2E tests
         run: pnpm test:e2e
         working-directory: web
@@ -73,7 +73,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
         working-directory: web
       - name: Start backend
-        run: docker-compose -f scripts/compose.yaml up -d
+        run: docker compose -f scripts/compose.yaml up -d
       - name: Start frontend in background
         run: pnpm dev &
         working-directory: web
