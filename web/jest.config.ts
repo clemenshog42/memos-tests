@@ -8,7 +8,7 @@ const config: Config = {
     '^@/(.*)$': '<rootDir>/src/$1',
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
     '^lucide-react$': '<rootDir>/tests/__mocks__/lucide-react.tsx',
-    '^uuid$': require.resolve('uuid'),
+
     '^(.+)\\?raw$': '<rootDir>/tests/__mocks__/raw.js'
   },
   transform: {
