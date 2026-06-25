@@ -3,8 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Memos Basic UI', () => {
   test('should load homepage and display Memos title', async ({ page }) => {
     await page.goto('/');
-    
-    // We expect the document title to contain "Memos"
+
     await expect(page).toHaveTitle(/Memos/);
   });
 
@@ -18,10 +17,9 @@ test.describe('Memos Basic UI', () => {
 
   test('should be able to find the language selector', async ({ page }) => {
     await page.goto('/');
-    
-    // The locale picker is in the auth form or header
+
     const localePicker = page.locator('button').filter({ hasText: /English|中文|Español/i }).first();
-    
+
     if (await localePicker.isVisible()) {
       await expect(localePicker).toBeVisible();
     }
@@ -29,10 +27,9 @@ test.describe('Memos Basic UI', () => {
 
   test('should be able to open learn more links', async ({ page }) => {
     await page.goto('/');
-    
-    // The AuthFooter might have a link to Memos github
+
     const githubLink = page.getByRole('link', { name: /Memos/i }).filter({ has: page.locator('svg') }).first();
-    
+
     if (await githubLink.isVisible()) {
       await expect(githubLink).toHaveAttribute('href', /github\.com/);
     }
