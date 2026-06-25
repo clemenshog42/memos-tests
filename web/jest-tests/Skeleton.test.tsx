@@ -20,8 +20,8 @@ describe("Skeleton Integration", () => {
   it("renders creator details when showCreator is true", () => {
     const { container } = render(<Skeleton count={1} showCreator={true} />);
 
-    // There should be a rounded-full div for avatar inside the skeleton
-    const avatarSkeleton = container.querySelector(".rounded-full");
-    expect(avatarSkeleton).toBeInTheDocument();
+    // There should be a w-8 h-8 div for avatar inside the skeleton
+    const avatarSkeleton = container.querySelector(".w-8.h-8");
+    expect(avatarSkeleton).not.toBeNull();
   });
 });

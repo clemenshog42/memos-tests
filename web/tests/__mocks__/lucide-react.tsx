@@ -1,18 +1,17 @@
-import React from 'react';
+const React = require('react');
 
-// A simple mock for all lucide-react icons
-const MockIcon = ({ name, ...props }: any) => {
-  return <svg data-testid={`lucide-icon-${name}`} {...props} />;
+const MockIcon = ({ name, ...props }) => {
+  return React.createElement('svg', { 'data-testid': `lucide-icon-${name}`, ...props });
 };
 
-export default new Proxy(
+module.exports = new Proxy(
   {},
   {
     get: (_, property) => {
       if (property === '__esModule') {
         return true;
       }
-      return (props: any) => <MockIcon name={property} {...props} />;
+      return (props) => MockIcon({ name: property, ...props });
     },
   }
 );

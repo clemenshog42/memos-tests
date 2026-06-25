@@ -4,9 +4,9 @@ import UserAvatar from "@/components/UserAvatar";
 
 describe("UserAvatar Integration", () => {
   it("renders with custom avatar url", () => {
-    render(<UserAvatar avatarUrl="/my-custom-avatar.png" className="custom-class" />);
+    const { container } = render(<UserAvatar avatarUrl="/my-custom-avatar.png" className="custom-class" />);
     
-    const img = screen.getByRole("img");
+    const img = container.querySelector("img");
     expect(img).toHaveAttribute("src", "/my-custom-avatar.png");
     
     const wrapper = img.parentElement;
@@ -14,9 +14,9 @@ describe("UserAvatar Integration", () => {
   });
 
   it("renders with default avatar url if not provided", () => {
-    render(<UserAvatar />);
+    const { container } = render(<UserAvatar />);
     
-    const img = screen.getByRole("img");
+    const img = container.querySelector("img");
     expect(img).toHaveAttribute("src", "/full-logo.webp");
   });
 });

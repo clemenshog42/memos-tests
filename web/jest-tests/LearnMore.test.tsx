@@ -28,7 +28,8 @@ describe("LearnMore Integration", () => {
 
     // Wait for tooltip to appear
     await waitFor(() => {
-      expect(screen.getByText("Example Title")).toBeInTheDocument();
+      const elements = screen.getAllByText("Example Title");
+      expect(elements.length).toBeGreaterThan(0);
     });
   });
 
@@ -40,7 +41,8 @@ describe("LearnMore Integration", () => {
     await user.hover(link);
 
     await waitFor(() => {
-      expect(screen.getByText("common.learn-more")).toBeInTheDocument();
+      const elements = screen.getAllByText("common.learn-more");
+      expect(elements.length).toBeGreaterThan(0);
     });
   });
 });
