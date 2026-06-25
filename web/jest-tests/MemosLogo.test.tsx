@@ -23,10 +23,8 @@ describe("MemosLogo Integration", () => {
   it("renders custom title and avatar from context", () => {
     render(<MemosLogo />);
 
-    // Check title
     expect(screen.getByText("Custom Memos")).toBeInTheDocument();
 
-    // Check avatar
     const avatar = screen.getByTestId("user-avatar");
     expect(avatar).toHaveAttribute("src", "/custom-logo.png");
   });
@@ -34,10 +32,8 @@ describe("MemosLogo Integration", () => {
   it("hides title when collapsed", () => {
     render(<MemosLogo collapsed={true} />);
 
-    // Title should not be in the document
     expect(screen.queryByText("Custom Memos")).not.toBeInTheDocument();
 
-    // Avatar should still be there
     const avatar = screen.getByTestId("user-avatar");
     expect(avatar).toBeInTheDocument();
   });

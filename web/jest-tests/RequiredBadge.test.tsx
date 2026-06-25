@@ -5,7 +5,7 @@ import RequiredBadge from "@/components/RequiredBadge";
 describe("RequiredBadge Integration", () => {
   it("renders the asterisk and default classes", () => {
     render(<RequiredBadge />);
-    
+
     const badge = screen.getByText("*");
     expect(badge).toBeInTheDocument();
     expect(badge).toHaveClass("text-destructive", "font-bold");
@@ -13,7 +13,7 @@ describe("RequiredBadge Integration", () => {
 
   it("appends custom className", () => {
     render(<RequiredBadge className="custom-badge" />);
-    
+
     const badge = screen.getByText("*");
     expect(badge).toHaveClass("custom-badge", "text-destructive");
   });

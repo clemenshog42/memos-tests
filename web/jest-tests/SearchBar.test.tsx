@@ -32,19 +32,15 @@ describe("SearchBar Integration", () => {
     const input = screen.getByRole("textbox");
     expect(input).toBeInTheDocument();
 
-    // Type query
     await user.type(input, "hello world");
     expect(input).toHaveValue("hello world");
 
-    // Press Enter
     await user.keyboard("{Enter}");
 
-    // Should call addFilter for each word
     expect(mockAddFilter).toHaveBeenCalledTimes(2);
     expect(mockAddFilter).toHaveBeenCalledWith({ factor: "contentSearch", value: "hello" });
     expect(mockAddFilter).toHaveBeenCalledWith({ factor: "contentSearch", value: "world" });
 
-    // Input should be cleared
     expect(input).toHaveValue("");
   });
 });
