@@ -1,5 +1,4 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import UserAvatar from "@/components/UserAvatar";
 
 describe("UserAvatar Integration", () => {
@@ -7,9 +6,10 @@ describe("UserAvatar Integration", () => {
     const { container } = render(<UserAvatar avatarUrl="/my-custom-avatar.png" className="custom-class" />);
     
     const img = container.querySelector("img");
+    expect(img).not.toBeNull();
     expect(img).toHaveAttribute("src", "/my-custom-avatar.png");
     
-    const wrapper = img.parentElement;
+    const wrapper = img!.parentElement;
     expect(wrapper).toHaveClass("custom-class");
   });
 
