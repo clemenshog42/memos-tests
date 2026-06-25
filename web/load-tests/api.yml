@@ -12,7 +12,5 @@ scenarios:
     flow:
       - get:
           url: "/api/v1/ping"
-          # Depending on the backend, this might 404 or 502 without the backend,
-          # but the load test will still measure the frontend server's proxying capability.
       - get:
           url: "/api/v1/auth/status"
