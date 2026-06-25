@@ -54,7 +54,7 @@ jobs:
       - name: Start backend
         run: docker compose -f scripts/compose.yaml up -d
       - name: Wait for backend
-        run: npx wait-on http-get://127.0.0.1:5230/api/v1/ping --timeout 60000
+        run: npx wait-on http-get://127.0.0.1:5230/healthz --timeout 60000
       - name: Run E2E tests
         run: pnpm test:e2e
         working-directory: web
@@ -80,7 +80,7 @@ jobs:
         run: pnpm dev &
         working-directory: web
       - name: Wait for backend and frontend
-        run: npx wait-on http-get://127.0.0.1:5230/api/v1/ping http-get://127.0.0.1:3001 --timeout 60000
+        run: npx wait-on http-get://127.0.0.1:5230/healthz http-get://127.0.0.1:3001/ --timeout 60000
       - name: Run Load tests
         run: pnpm test:load
         working-directory: web
