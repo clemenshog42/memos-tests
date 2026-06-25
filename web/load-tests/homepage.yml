@@ -1,0 +1,14 @@
+config:
+  target: "http://localhost:3001"
+  phases:
+    - duration: 10
+      arrivalRate: 5
+      name: Warm up
+    - duration: 30
+      arrivalRate: 20
+      name: Sustained load
+scenarios:
+  - name: "Fetch homepage"
+    flow:
+      - get:
+          url: "/"

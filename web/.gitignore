@@ -5,3 +5,5 @@ dist
 dist-ssr
 *.local
 src/types/proto/store
+playwright-report
+test-results

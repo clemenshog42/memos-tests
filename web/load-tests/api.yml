@@ -1,0 +1,18 @@
+config:
+  target: "http://localhost:3001"
+  phases:
+    - duration: 10
+      arrivalRate: 10
+      name: Warm up
+    - duration: 30
+      arrivalRate: 50
+      name: High load on API
+scenarios:
+  - name: "Fetch API endpoints"
+    flow:
+      - get:
+          url: "/api/v1/ping"
+          # Depending on the backend, this might 404 or 502 without the backend,
+          # but the load test will still measure the frontend server's proxying capability.
+      - get:
+          url: "/api/v1/auth/status"
