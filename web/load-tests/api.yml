@@ -1,5 +1,5 @@
 config:
-  target: "http://127.0.0.1:5230"
+  target: "http://localhost:5230"
   phases:
     - duration: 10
       arrivalRate: 10
@@ -10,7 +10,5 @@ config:
 scenarios:
   - name: "Fetch API endpoints"
     flow:
-      - get:
-          url: "/healthz"
       - get:
           url: "/healthz"
